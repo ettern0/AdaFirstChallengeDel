@@ -3,7 +3,6 @@ import Foundation
 import SwiftUI
 import Cocoa
 
-
 public struct Scene1: View {
     
     public init() { }
