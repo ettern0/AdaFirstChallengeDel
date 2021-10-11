@@ -14,7 +14,7 @@ struct ContentView1: View {
             
         }
     }
-    
+//    dfdsf
     var nextButton: some View {
         Button (action: { var x = 1 }) { Text("continue") }
     }
