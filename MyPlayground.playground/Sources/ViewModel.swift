@@ -9,7 +9,7 @@ public class StoryBoard: ObservableObject {
     public var scenarioView: AnyView {
         switch model.scene {
         case .scene1:
-           return AnyView(scene1().body)
+           return AnyView(scene3().body)
         case .scene2:
             return AnyView(scene2().body)
         case .scene3:
