@@ -1,5 +1,5 @@
 import SwiftUI
-import Cocoa
+import UIKit
 
 public struct Scene4: View {
     @State var scale4 = 0.75
@@ -8,13 +8,13 @@ public struct Scene4: View {
         ZStack {
             ZStack {
                 
-                Image(nsImage: NSImage(named: "NS4.png")!)
+                Image(uiImage: UIImage(named: "NS4.png")!)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 560, height: 700)
             }
             
-            Image(nsImage: NSImage(named: "Heart.png")!)
+            Image(uiImage: UIImage(named: "Heart.png")!)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 75, height: 75)
