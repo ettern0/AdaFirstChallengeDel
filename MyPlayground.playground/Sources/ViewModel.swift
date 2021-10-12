@@ -13,7 +13,7 @@ public class StoryBoard: ObservableObject {
         case .scene2:
             return AnyView(scene2().body)
         case .scene3:
-            return AnyView(scene1().body)
+            return AnyView(scene3().body)
         default:
             return AnyView(scene1().body)
         }
