@@ -24,7 +24,7 @@ public class storyBoard: ObservableObject {
         case .Scene1:
             model.toogleTheScene(to: .Scene2)
         case .Scene2:
-            model.toogleTheScene(to: .Scene3)
+            model.toogleTheScene(to: .Scene1)
         case .Scene3:
             model.toogleTheScene(to: .Scene4)
         default:
