@@ -11,6 +11,6 @@ struct ContentView: View {
         viewModel.scenarioView
     }
 }
-
-PlaygroundPage.current.setLiveView(ContentView())
+let sfed = UIImage(named: "scene1/NS1")!
+// PlaygroundPage.current.setLiveView(ContentView())
 
