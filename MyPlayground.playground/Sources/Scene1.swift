@@ -1,7 +1,7 @@
 
 import Foundation
 import SwiftUI
-import UIKit
+//import UIKit
 import SpriteKit
 
 public struct scene1: View {
