@@ -14,6 +14,8 @@ public class storyBoard: ObservableObject {
             return AnyView(Scene2().body)
         case .Scene3:
             return AnyView(Scene1().body)
+        case .Scene4:
+            return AnyView(Scene4().body)
         default:
             return AnyView(Scene1().body)
         }
@@ -22,11 +24,11 @@ public class storyBoard: ObservableObject {
     func toogleTheScene() {
         switch model.scene {
         case .Scene1:
-            model.toogleTheScene(to: .Scene2)
+            model.toogleTheScene(to: .Scene4)
         case .Scene2:
             model.toogleTheScene(to: .Scene1)
         case .Scene3:
-            model.toogleTheScene(to: .Scene4)
+            model.toogleTheScene(to: .Scene2)
         default:
             model.toogleTheScene(to: .TheEnd)
         }
