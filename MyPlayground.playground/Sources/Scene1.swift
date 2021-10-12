@@ -1,17 +1,17 @@
 
 import Foundation
 import SwiftUI
-import Cocoa
+import UIKit
 
-public struct Scene1: View {
+public struct scene1: View {
     
     public init() { }
    
-    var viewModel = storyBoard.instance
+    var viewModel = StoryBoard.instance
     
     public var body: some View {
         VStack {
-            Image(nsImage: NSImage(named: "NS1")!)
+            Image(uiImage: UIImage(named: "NS1")!)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 560, height: 700)

@@ -5,7 +5,7 @@ import SwiftUI
 
 struct ContentView: View {
    
-    @ObservedObject var viewModel = storyBoard.instance
+    @ObservedObject var viewModel = StoryBoard.instance
     
     var body: some View {
         viewModel.scenarioView
