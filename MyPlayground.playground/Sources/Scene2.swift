@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-public struct scene2: View {
+public struct Scene2: View {
     
     public init() { }
    
@@ -14,9 +14,5 @@ public struct scene2: View {
         }.onAppear() {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                 viewModel.toogleTheScene() }}
-    }
-    
-    var nextButton: some View {
-        Button (action: { viewModel.toogleTheScene() }) { Text("continue2") }
     }
 }

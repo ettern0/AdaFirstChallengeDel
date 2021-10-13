@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-public struct scene1: View {
+public struct Scene1: View {
 
     public init() { }
 
@@ -14,10 +14,13 @@ public struct scene1: View {
     public var body: some View {
         VStack {
             SpriteView(scene: scene).frame(width: scene.frame.width, height: scene.frame.height) }
-        .onDisappear() { withAnimation(Animation.easeOut(duration: 2.0).delay(0.5)) { }}
         .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) { viewModel.toogleTheScene() }}
-
+            SoundManager.instance.playSound(sound: .trainAmbience)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+                withAnimation { viewModel.toogleTheScene() }
+            }
+        }
+        .onDisappear { SoundManager.instance.stopPlaying() }
     }
 }
 

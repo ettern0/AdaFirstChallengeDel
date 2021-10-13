@@ -2,8 +2,8 @@ import Foundation
 
 struct Scenario {
     
-    enum Scenes {
-        case scene1, scene2, scene3, scene4, theEnd
+    enum Scenes: Int {
+        case scene1 = 0, scene2 = 1, scene3 = 2, scene4 = 3, theEnd = 4
     }
 
    var scene: Scenes = .scene1
