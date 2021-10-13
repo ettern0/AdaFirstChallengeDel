@@ -14,28 +14,27 @@ public struct scene1: View {
     public var body: some View {
         VStack {
             SpriteView(scene: scene).frame(width: scene.frame.width, height: scene.frame.height) }
+        .onDisappear() { withAnimation(Animation.easeOut(duration: 2.0).delay(0.5)) { }}
         .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-                viewModel.toogleTheScene() }}
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) { viewModel.toogleTheScene() }}
+
     }
 }
 
 class Scene1Animation: SKScene {
 
-    let man: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/person")
-    let escalator: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/escalator/1")
-    let manDialoge: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/theRouteIsBuilt")
-    let backGround: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/background")
+    let man: SKSpriteNode = SKSpriteNode(imageNamed: "person")
+    let escalator: SKSpriteNode = SKSpriteNode(imageNamed: "escalator/1")
+    let manDialoge: SKSpriteNode = SKSpriteNode(imageNamed: "theRouteIsBuilt")
+    let backGround: SKSpriteNode = SKSpriteNode(imageNamed: "background")
     var viewModel = StoryBoard.instance
-//    let nextButton: SKLabelNode = SKLabelNode(text: fontNamed: "NextButton")
-//    nextButton.name = "nextButton"
 
     override func didMove(to view: SKView) {
 
         escalator.zPosition = 0
         escalator.position.x = 300
-        escalator.position.y = -self.frame.minY + man.size.height / 3
         escalator.scale(to: CGSize(width: escalator.size.width/2, height: escalator.size.height/2))
+        //escalator.position.y = - self.frame.minY + man.size.height / 3
         addChild(escalator)
 
         backGround.zPosition = -1
@@ -57,23 +56,12 @@ class Scene1Animation: SKScene {
         addChild(manDialoge)
         manDialoge.run(SKAction.sequence([.wait(forDuration: 2), .fadeIn(withDuration: 2)]))
 
-        let walkFrames = escalatorAnimation(forImagePrefix: "scene1/escalator/", frameCount: 2)
+        let walkFrames = escalatorAnimation(forImagePrefix: "escalator/", frameCount: 2)
         let animateFrameAction: SKAction = .animate(with: walkFrames, timePerFrame: 0.6, resize: true, restore: false)
         escalator.run(.repeatForever(animateFrameAction))
 
         man.run(SKAction.repeatForever(SKAction.sequence([.moveTo(y: man.position.y + 10, duration: 0.5),
                                                           .moveTo(y: man.position.y - 10, duration: 0.5)])))
-
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//            self.run(.fadeIn(withDuration: 1))
-//            self.run(.wait(forDuration: 3))
-//            self.viewModel.toogleTheScene()
-////            let transition = SKTransition.crossFade(withDuration: 1)
-////            if let gameScene = SKScene(fileNamed: "Scene2Animation") {
-////                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-////                gameScene.size = CGSize(width: 300, height: 700)
-////                self.view?.presentScene(gameScene, transition: transition)}
-//        }
     }
 
     func escalatorAnimation(forImagePrefix baseImageName: String, frameCount count: Int) -> [SKTexture] {
