@@ -15,7 +15,6 @@ public struct scene1: View {
         VStack {
             SpriteView(scene: scene).frame(width: scene.frame.width, height: scene.frame.height) }
         //.animation(.easeInOut(duration: 1).delay(1))
-
     }
 }
 
@@ -25,6 +24,9 @@ class GameScene: SKScene {
     let escalator: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/escalator/1")
     let manDialoge: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/theRouteIsBuilt")
     let backGround: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/background")
+    var viewModel = StoryBoard.instance
+//    let nextButton: SKLabelNode = SKLabelNode(text: fontNamed: "NextButton")
+//    nextButton.name = "nextButton"
 
     override func didMove(to view: SKView) {
 
@@ -58,11 +60,18 @@ class GameScene: SKScene {
         escalator.run(.repeatForever(animateFrameAction))
 
         man.run(SKAction.repeatForever(SKAction.sequence([.moveTo(y: man.position.y + 10, duration: 0.5),
-                                                        .moveTo(y: man.position.y - 10, duration: 0.5)])))
+                                                          .moveTo(y: man.position.y - 10, duration: 0.5)])))
 
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.run(.fadeIn(withDuration: 1))
+            self.run(.wait(forDuration: 3))
+            //self.viewModel.toogleTheScene()
+            let transition = SKTransition.crossFade(withDuration: 1)
+            if let gameScene = SKScene(fileNamed: "SpriteScene/Scene2Animation") {
+                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                gameScene.size = CGSize(width: 300, height: 700)
+                self.view?.presentScene(gameScene, transition: transition)}
         }
     }
 

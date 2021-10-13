@@ -1,6 +1,7 @@
 
 import PlaygroundSupport
 import SwiftUI
+import SpriteKit
 
 
 struct ContentView: View {
@@ -11,6 +12,8 @@ struct ContentView: View {
         viewModel.scenarioView
     }
 }
+
+let gameScene = SKScene(fileNamed: "SpriteScene/Scene2Animation")
 
 PlaygroundPage.current.setLiveView(ContentView())
 
