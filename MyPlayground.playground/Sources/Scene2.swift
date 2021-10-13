@@ -11,11 +11,7 @@ public struct scene2: View {
     
     public var body: some View {
         VStack {
-            Image(uiImage: UIImage(named: "scena2")!)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 560, height: 700)
-            nextButton
+            SpriteView(scene: SKScene(fileNamed: "Scene2Animation")!)
         }.onAppear() {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                 viewModel.toogleTheScene() }}
