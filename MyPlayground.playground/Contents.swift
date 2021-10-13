@@ -13,7 +13,5 @@ struct ContentView: View {
     }
 }
 
-let gameScene = SKScene(fileNamed: "SpriteScene/Scene2Animation")
-
 PlaygroundPage.current.setLiveView(ContentView())
 

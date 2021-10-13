@@ -9,7 +9,7 @@ public struct scene1: View {
 
     var viewModel = StoryBoard.instance
 
-    private let scene = GameScene(size: CGSize(width: 375, height: 700))
+    private let scene = Scene1Animation(size: CGSize(width: 375, height: 700))
 
     public var body: some View {
         VStack {
@@ -18,9 +18,9 @@ public struct scene1: View {
     }
 }
 
-class GameScene: SKScene {
+class Scene1Animation: SKScene {
 
-    let man: SKSpriteNode = SKSpriteNode(imageNamed: "characters/person")
+    let man: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/person")
     let escalator: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/escalator/1")
     let manDialoge: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/theRouteIsBuilt")
     let backGround: SKSpriteNode = SKSpriteNode(imageNamed: "scene1/background")
@@ -45,7 +45,8 @@ class GameScene: SKScene {
 
         man.zPosition = 1
         man.position.x = 300
-        man.position.y = -self.frame.minY + man.size.height / 2 - 10
+        man.scale(to: CGSize(width: man.size.width/2, height: man.size.height/2))
+        man.position.y = -self.frame.minY + man.size.height / 2
         addChild(man)
 
         manDialoge.scale(to: CGSize(width: manDialoge.size.width/3, height: manDialoge.size.height/3))
@@ -53,7 +54,6 @@ class GameScene: SKScene {
         manDialoge.alpha = 0
         addChild(manDialoge)
         manDialoge.run(SKAction.sequence([.wait(forDuration: 2), .fadeIn(withDuration: 2)]))
-        //manDialoge.run(.fadeIn(withDuration: 2))
 
         let walkFrames = escalatorAnimation(forImagePrefix: "scene1/escalator/", frameCount: 2)
         let animateFrameAction: SKAction = .animate(with: walkFrames, timePerFrame: 0.6, resize: true, restore: false)
@@ -62,16 +62,15 @@ class GameScene: SKScene {
         man.run(SKAction.repeatForever(SKAction.sequence([.moveTo(y: man.position.y + 10, duration: 0.5),
                                                           .moveTo(y: man.position.y - 10, duration: 0.5)])))
 
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.run(.fadeIn(withDuration: 1))
             self.run(.wait(forDuration: 3))
-            //self.viewModel.toogleTheScene()
-            let transition = SKTransition.crossFade(withDuration: 1)
-            if let gameScene = SKScene(fileNamed: "SpriteScene/Scene2Animation") {
-                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-                gameScene.size = CGSize(width: 300, height: 700)
-                self.view?.presentScene(gameScene, transition: transition)}
+            self.viewModel.toogleTheScene()
+//            let transition = SKTransition.crossFade(withDuration: 1)
+//            if let gameScene = SKScene(fileNamed: "Scene2Animation") {
+//                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//                gameScene.size = CGSize(width: 300, height: 700)
+//                self.view?.presentScene(gameScene, transition: transition)}
         }
     }
 
