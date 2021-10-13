@@ -14,7 +14,9 @@ public struct scene1: View {
     public var body: some View {
         VStack {
             SpriteView(scene: scene).frame(width: scene.frame.width, height: scene.frame.height) }
-        //.animation(.easeInOut(duration: 1).delay(1))
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+                viewModel.toogleTheScene() }}
     }
 }
 
@@ -62,16 +64,16 @@ class Scene1Animation: SKScene {
         man.run(SKAction.repeatForever(SKAction.sequence([.moveTo(y: man.position.y + 10, duration: 0.5),
                                                           .moveTo(y: man.position.y - 10, duration: 0.5)])))
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.run(.fadeIn(withDuration: 1))
-            self.run(.wait(forDuration: 3))
-            self.viewModel.toogleTheScene()
-//            let transition = SKTransition.crossFade(withDuration: 1)
-//            if let gameScene = SKScene(fileNamed: "Scene2Animation") {
-//                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//                gameScene.size = CGSize(width: 300, height: 700)
-//                self.view?.presentScene(gameScene, transition: transition)}
-        }
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//            self.run(.fadeIn(withDuration: 1))
+//            self.run(.wait(forDuration: 3))
+//            self.viewModel.toogleTheScene()
+////            let transition = SKTransition.crossFade(withDuration: 1)
+////            if let gameScene = SKScene(fileNamed: "Scene2Animation") {
+////                gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+////                gameScene.size = CGSize(width: 300, height: 700)
+////                self.view?.presentScene(gameScene, transition: transition)}
+//        }
     }
 
     func escalatorAnimation(forImagePrefix baseImageName: String, frameCount count: Int) -> [SKTexture] {

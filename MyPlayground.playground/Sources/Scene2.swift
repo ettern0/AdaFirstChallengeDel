@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import UIKit
 import SpriteKit
 
 public struct scene2: View {
@@ -11,7 +10,7 @@ public struct scene2: View {
     
     public var body: some View {
         VStack {
-            SpriteView(scene: SKScene(fileNamed: "Scene2Animation")!)
+            SpriteView(scene: SKScene(fileNamed: "SpriteScene/Scene2Animation")!)
         }.onAppear() {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                 viewModel.toogleTheScene() }}
