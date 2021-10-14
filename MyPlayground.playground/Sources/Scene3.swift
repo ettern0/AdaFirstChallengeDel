@@ -10,9 +10,9 @@ public struct Scene3: View {
 
     public var body: some View {
         VStack {
-            //SpriteView(scene: SKScene(fileNamed: "SpriteScene/Scene2Animation")!)
+            SpriteView(scene: SKScene(fileNamed: "SpriteScene/Scene3Animation")!)
         }.onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                 viewModel.toogleTheScene() }}
     }
 }
