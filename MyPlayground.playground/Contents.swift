@@ -20,7 +20,7 @@ public extension AnyTransition {
     static func spinIn(anchor: UnitPoint) -> AnyTransition {
         withAnimation {
             .modifier(
-                active: SpinTransitionModifier(angle: -90, anchor: anchor, scale: CGSize(width: 0, height: 0)),
+                active: SpinTransitionModifier(angle: 90, anchor: anchor, scale: CGSize(width: 0, height: 0)),
                 identity: SpinTransitionModifier(angle: 0, anchor: anchor, scale: CGSize(width: 1, height: 1)))
         }
     }
@@ -28,7 +28,7 @@ public extension AnyTransition {
     static func spinOut(anchor: UnitPoint) -> AnyTransition {
         withAnimation {
             .modifier(
-                active: SpinTransitionModifier(angle: 90, anchor: anchor, scale: CGSize(width: 1, height: 1)),
+                active: SpinTransitionModifier(angle: -90, anchor: anchor, scale: CGSize(width: 1, height: 1)),
                 identity: SpinTransitionModifier(angle: 0, anchor: anchor, scale: CGSize(width: 0, height: 0)))
         }
     }
